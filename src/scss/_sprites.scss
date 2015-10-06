@@ -1,0 +1,103 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$tipadvise-name: 'tipadvise';
+$tipadvise-x: 0px;
+$tipadvise-y: 0px;
+$tipadvise-offset-x: 0px;
+$tipadvise-offset-y: 0px;
+$tipadvise-width: 55px;
+$tipadvise-height: 46px;
+$tipadvise-total-width: 104px;
+$tipadvise-total-height: 93px;
+$tipadvise-image: '../assets/images/spritesheet.png';
+$tipadvise: (0px, 0px, 0px, 0px, 55px, 46px, 104px, 93px, '../assets/images/spritesheet.png', 'tipadvise', );
+$worklife-name: 'worklife';
+$worklife-x: 0px;
+$worklife-y: 46px;
+$worklife-offset-x: 0px;
+$worklife-offset-y: -46px;
+$worklife-width: 49px;
+$worklife-height: 47px;
+$worklife-total-width: 104px;
+$worklife-total-height: 93px;
+$worklife-image: '../assets/images/spritesheet.png';
+$worklife: (0px, 46px, 0px, -46px, 49px, 47px, 104px, 93px, '../assets/images/spritesheet.png', 'worklife', );
+$worklifecopy-name: 'worklifecopy';
+$worklifecopy-x: 55px;
+$worklifecopy-y: 0px;
+$worklifecopy-offset-x: -55px;
+$worklifecopy-offset-y: 0px;
+$worklifecopy-width: 49px;
+$worklifecopy-height: 47px;
+$worklifecopy-total-width: 104px;
+$worklifecopy-total-height: 93px;
+$worklifecopy-image: '../assets/images/spritesheet.png';
+$worklifecopy: (55px, 0px, -55px, 0px, 49px, 47px, 104px, 93px, '../assets/images/spritesheet.png', 'worklifecopy', );
+$spritesheet-width: 104px;
+$spritesheet-height: 93px;
+$spritesheet-image: '../assets/images/spritesheet.png';
+$spritesheet-sprites: ($tipadvise, $worklife, $worklifecopy, );
+$spritesheet: (104px, 93px, '../assets/images/spritesheet.png', $spritesheet-sprites, );
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

@@ -1,0 +1,19 @@
+
+
+
+body:after {
+	content: "mobile";
+	display: none;
+}
+@media only screen and (min-width: 1025px) {
+	body:after {
+		content: "desktop";
+		
+	}
+}
+@media only screen and (min-width: 1200px) {
+	body:after {
+		content: "bigdesktop";
+		
+	}
+}

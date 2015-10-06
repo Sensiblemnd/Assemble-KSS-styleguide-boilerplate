@@ -1,0 +1,21 @@
+---
+component: content
+---
+{{#each sections}}
+<div id="section-{{reference}}">
+  <h{{depth}} class="page-header">{{reference}} {{{header}}}</h{{depth}}>
+  {{#if description}}
+  <div>
+    {{{description}}}
+  </div>
+  {{/if}}
+  {{#if markup}}
+    {{#each modifiers}}
+        {{{description}}}
+        {{{modifierMarkup}}}
+        <hr>
+    {{/each}}
+    <pre><code class="html">{{markup}}</code></pre>
+  {{/if}}
+</div>
+{{/each}}

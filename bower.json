@@ -1,0 +1,10 @@
+{
+  "name": "test",
+  "version": "0.1.0",
+  "dependencies": {
+  	  "jquery": "~1.11.3",
+  	   "modernizr": "~2.8.2"
+  },
+  "private": true,
+  "devDependencies": {}
+}
