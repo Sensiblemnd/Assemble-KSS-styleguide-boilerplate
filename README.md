@@ -3,7 +3,7 @@
 # Static site  and  styleguide Maker
 Description
 ===========
-Static site  and  styleguide Maker
+Static site  and  styleguide Maker IMPORTANT DO NOT USE. Deprecated.
 
 Requirements
 ------------
